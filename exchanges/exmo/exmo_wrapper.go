@@ -224,3 +224,12 @@ func (e *EXMO) WithdrawFiatExchangeFunds(currency pair.CurrencyItem, amount floa
 func (e *EXMO) WithdrawFiatExchangeFundsToInternationalBank(currency pair.CurrencyItem, amount float64) (string, error) {
 	return "", errors.New("not yet implemented")
 }
+
+// GetFeeByType returns an estimate of fee based on type of transaction
+func (e *EXMO) GetFeeByType(feeBuilder exchange.FeeBuilder) (float64, error) {
+	resp, err := e.GetFee(feeBuilder)
+	if err != nil {
+		return resp, err
+	}
+	return resp, nil
+}
