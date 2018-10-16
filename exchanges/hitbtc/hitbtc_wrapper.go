@@ -207,3 +207,12 @@ func (h *HitBTC) WithdrawFiatExchangeFunds(currency pair.CurrencyItem, amount fl
 func (h *HitBTC) WithdrawFiatExchangeFundsToInternationalBank(currency pair.CurrencyItem, amount float64) (string, error) {
 	return "", errors.New("not yet implemented")
 }
+
+// GetFeeByType returns an estimate of fee based on type of transaction
+func (h *HitBTC) GetFeeByType(feeBuilder exchange.FeeBuilder) (float64, error) {
+	resp, err := h.GetFee(feeBuilder)
+	if err != nil {
+		return resp, err
+	}
+	return resp, nil
+}
