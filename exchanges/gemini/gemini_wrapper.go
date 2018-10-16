@@ -175,3 +175,12 @@ func (g *Gemini) WithdrawFiatExchangeFunds(currency pair.CurrencyItem, amount fl
 func (g *Gemini) WithdrawFiatExchangeFundsToInternationalBank(currency pair.CurrencyItem, amount float64) (string, error) {
 	return "", errors.New("not yet implemented")
 }
+
+// GetFeeByType returns an estimate of fee based on type of transaction
+func (g *Gemini) GetFeeByType(feeBuilder exchange.FeeBuilder) (float64, error) {
+	resp, err := g.GetFee(feeBuilder)
+	if err != nil {
+		return resp, err
+	}
+	return resp, nil
+}
