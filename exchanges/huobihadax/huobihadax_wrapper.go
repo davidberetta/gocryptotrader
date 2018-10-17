@@ -183,3 +183,12 @@ func (h *HUOBIHADAX) WithdrawFiatExchangeFunds(currency pair.CurrencyItem, amoun
 func (h *HUOBIHADAX) WithdrawFiatExchangeFundsToInternationalBank(currency pair.CurrencyItem, amount float64) (string, error) {
 	return "", errors.New("not yet implemented")
 }
+
+// GetFeeByType returns an estimate of fee based on type of transaction
+func (h *HUOBIHADAX) GetFeeByType(feeBuilder exchange.FeeBuilder) (float64, error) {
+	resp, err := h.GetFee(feeBuilder)
+	if err != nil {
+		return resp, err
+	}
+	return resp, nil
+}
