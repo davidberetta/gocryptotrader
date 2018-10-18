@@ -196,3 +196,12 @@ func (l *Liqui) WithdrawFiatExchangeFunds(currency pair.CurrencyItem, amount flo
 func (l *Liqui) WithdrawFiatExchangeFundsToInternationalBank(currency pair.CurrencyItem, amount float64) (string, error) {
 	return "", errors.New("not yet implemented")
 }
+
+// GetFeeByType returns an estimate of fee based on type of transaction
+func (l *Liqui) GetFeeByType(feeBuilder exchange.FeeBuilder) (float64, error) {
+	resp, err := l.GetFee(feeBuilder)
+	if err != nil {
+		return resp, err
+	}
+	return resp, nil
+}
