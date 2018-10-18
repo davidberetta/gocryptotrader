@@ -188,3 +188,12 @@ func (y *Yobit) WithdrawFiatExchangeFunds(currency pair.CurrencyItem, amount flo
 func (y *Yobit) WithdrawFiatExchangeFundsToInternationalBank(currency pair.CurrencyItem, amount float64) (string, error) {
 	return "", errors.New("not yet implemented")
 }
+
+// GetFeeByType returns an estimate of fee based on type of transaction
+func (y *Yobit) GetFeeByType(feeBuilder exchange.FeeBuilder) (float64, error) {
+	resp, err := y.GetFee(feeBuilder)
+	if err != nil {
+		return resp, err
+	}
+	return resp, nil
+}
