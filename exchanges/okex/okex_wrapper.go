@@ -204,3 +204,12 @@ func (o *OKEX) WithdrawFiatExchangeFunds(currency pair.CurrencyItem, amount floa
 func (o *OKEX) WithdrawFiatExchangeFundsToInternationalBank(currency pair.CurrencyItem, amount float64) (string, error) {
 	return "", errors.New("not yet implemented")
 }
+
+// GetFeeByType returns an estimate of fee based on type of transaction
+func (o *OKEX) GetFeeByType(feeBuilder exchange.FeeBuilder) (float64, error) {
+	resp, err := o.GetFee(feeBuilder)
+	if err != nil {
+		return resp, err
+	}
+	return resp, nil
+}
