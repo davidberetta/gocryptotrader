@@ -206,3 +206,12 @@ func (w *WEX) WithdrawFiatExchangeFunds(currency pair.CurrencyItem, amount float
 func (w *WEX) WithdrawFiatExchangeFundsToInternationalBank(currency pair.CurrencyItem, amount float64) (string, error) {
 	return "", errors.New("not yet implemented")
 }
+
+// GetFeeByType returns an estimate of fee based on type of transaction
+func (w *WEX) GetFeeByType(feeBuilder exchange.FeeBuilder) (float64, error) {
+	resp, err := w.GetFee(feeBuilder)
+	if err != nil {
+		return resp, err
+	}
+	return resp, nil
+}
