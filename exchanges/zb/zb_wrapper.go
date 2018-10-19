@@ -184,3 +184,12 @@ func (z *ZB) WithdrawFiatExchangeFunds(currency pair.CurrencyItem, amount float6
 func (z *ZB) WithdrawFiatExchangeFundsToInternationalBank(currency pair.CurrencyItem, amount float64) (string, error) {
 	return "", errors.New("not yet implemented")
 }
+
+// GetFeeByType returns an estimate of fee based on type of transaction
+func (z *ZB) GetFeeByType(feeBuilder exchange.FeeBuilder) (float64, error) {
+	resp, err := z.GetFee(feeBuilder)
+	if err != nil {
+		return resp, err
+	}
+	return resp, nil
+}
